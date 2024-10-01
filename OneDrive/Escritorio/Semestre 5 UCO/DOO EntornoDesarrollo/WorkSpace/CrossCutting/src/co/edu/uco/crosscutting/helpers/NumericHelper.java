@@ -2,7 +2,7 @@ package co.edu.uco.crosscutting.helpers;
 
 public class NumericHelper {
 
-    private NumericHelper() {
+	private NumericHelper() {
     }
 
     public static boolean isGreater(final double a, final double b) {

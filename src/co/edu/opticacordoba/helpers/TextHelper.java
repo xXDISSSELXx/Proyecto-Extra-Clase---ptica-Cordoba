@@ -42,5 +42,13 @@ public class TextHelper {
 		Matcher matcher = pattern.matcher(string);
 		return matcher.find();
 	}
+	
+	public static Integer amountLetters(final String string) {
+		return string.length();
+	}
+	
+	public static boolean inRangeAmmountOfLetters(final String string, final Integer number) {
+		return amountLetters(string) <= number;
+	}
 }
 

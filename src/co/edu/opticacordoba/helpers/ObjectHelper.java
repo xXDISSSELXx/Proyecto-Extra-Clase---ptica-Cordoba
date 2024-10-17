@@ -1,6 +1,7 @@
 package co.edu.opticacordoba.helpers;
 
 public class ObjectHelper {
+	String name = "Juan";
 
 private ObjectHelper() {
 		

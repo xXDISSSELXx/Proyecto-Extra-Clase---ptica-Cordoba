@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Paciente</title>
+    <link rel="stylesheet" href="src/App.css">
+</head>
+<body>
+<div class="container">
+    <div class="graphic"></div>
+
+    <div class="image-container">
+        <img src="/clientesOptica/Imagenes/Imgfiguras.jpg" alt="Figura formas geometricas" style="width: 300px; height: auto;">
+    </div>
+
+    <div class="form-container">
+        <h2>Agregar Paciente </h2>
+
+        <div class="form-group">
+            <div>
+                <label for="nombres">Nombres</label>
+                <input type="text" id="nombres" placeholder="Ingrese nombres">
+            </div>
+            <div>
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" placeholder="Ingrese apellidos">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div>
+                <label for="tipo-documento">Tipo de documento</label>
+                <select id="tipo-documento">
+                    <option>Seleccionar</option>
+                    <option>Cédula</option>
+                    <option>Tarjeta de Identidad</option>
+                    <option>Cedula Extranjera</option>
+                </select>
+            </div>
+            <div>
+                <label for="numero-documento">N° Documento</label>
+                <input type="text" id="numero-documento" placeholder="Ingrese número">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div>
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" id="correo" placeholder="Ingrese correo">
+            </div>
+            <div>
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" placeholder="Ingrese teléfono">
+            </div>
+        </div>
+
+
+        <div class="buttons">
+            <button>Guardar</button>
+            <button class="cancel">Cancelar</button>
+        
+
+    
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -3,6 +3,7 @@ package co.edu.opticacordoba.helpers;
 public class IdHelper {
 	
 	private static final String DEFAULT_ID = "1";
+	private static final String NAME = "2";
 	
 	public static final Integer convertToNumber(final String idAsString) {
 		return TextHelper.applyTrim(idAsString).matches("\\d+") ?  Integer.parseInt(idAsString) : getDefault();

@@ -20,11 +20,11 @@
         <div class="form-group">
             <div>
                 <label for="nombres">Nombres</label>
-                <input type="text" id="nombres" placeholder="Ingrese nombres">
+                <input type="text" id="nombres" placeholder="Ingrese nombres" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
             </div>
             <div>
                 <label for="apellidos">Apellidos</label>
-                <input type="text" id="apellidos" placeholder="Ingrese apellidos">
+                <input type="text" id="apellidos" placeholder="Ingrese apellidos" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
             </div>
         </div>
 
@@ -40,7 +40,7 @@
             </div>
             <div>
                 <label for="numero-documento">N° Documento</label>
-                <input type="text" id="numero-documento" placeholder="Ingrese número">
+                <input type="text" id="numero-documento" placeholder="Ingrese número" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
             </div>
         </div>
 
@@ -51,7 +51,7 @@
             </div>
             <div>
                 <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" placeholder="Ingrese teléfono">
+                <input type="tel" id="telefono" placeholder="Ingrese teléfono" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
             </div>
         </div>
 

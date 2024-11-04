@@ -20,7 +20,7 @@
         <div class="form-group" >
             <div >
                 <label for="nombres">Nombres</label>
-                <input type="text" id="nombres" placeholder="Ingrese nombres" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" autocomplete="off">
+                <input type="text" id="nombres" placeholder="Ingrese nombres" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '').replace(/[^\w\s]/gi, '')" autocomplete="off">
             </div>
             <div>
                 <label for="apellidos">Apellidos</label>
@@ -59,10 +59,17 @@
         <div class="buttons">
             <button>Guardar</button>
             <button class="cancel">Cancelar</button>
-        
-
-    
         </div>
+    <script>
+        document.querySelector('button').addEventListener('click', function() {
+            document.getElementById('nombres').value = '';
+            document.getElementById('apellidos').value = '';
+            document.getElementById('tipo-documento').selectedIndex = 0;
+            document.getElementById('numero-documento').value = '';
+            document.getElementById('correo').value = '';
+            document.getElementById('telefono').value = '';
+        });
+    </script>
     </div>
 </div>
 

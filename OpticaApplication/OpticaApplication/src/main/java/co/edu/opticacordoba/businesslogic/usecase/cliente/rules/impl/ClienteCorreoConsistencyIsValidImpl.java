@@ -14,6 +14,15 @@ public class ClienteCorreoConsistencyIsValidImpl implements ClienteCorreoConsist
 		}
 	}
 	
+	@Override
+	public void executeUpdate(String data) {
+		validateLength(data);
+		if(!TextHelper.isEmptyApplyingTrim(data)) {
+			isCorreo(data);
+		}
+	}
+
+	
 	private void validateLength(final String data) {
 		if(!TextHelper.maxLenIsValid(TextHelper.applyTrim(data), 150)) {
 			var userMessage= "El correo del cliente puede contener máximo 150 caracteres."; 
@@ -28,4 +37,5 @@ public class ClienteCorreoConsistencyIsValidImpl implements ClienteCorreoConsist
 		 }
 	}
 
+	
 }

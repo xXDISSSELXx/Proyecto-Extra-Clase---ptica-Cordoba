@@ -9,7 +9,7 @@ public class TipoDocumentoDTO extends DomainDTO{
 	
 	public TipoDocumentoDTO() {
 		super(IdHelper.getDefaultAsString());
-		// TODO Auto-generated constructor stub
+		setTipoDocumento(TextHelper.EMPTY);
 	}
 
 	public static final TipoDocumentoDTO create() {

@@ -2,7 +2,6 @@ package co.edu.opticacordoba.businesslogic.usecase.cliente.rules.impl;
 
 import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.ClienteNumeroDocumentoConsistencyIsValid;
 import co.edu.opticacordoba.croscutting.exceptions.BusinessLogicOpticaException;
-import co.edu.opticacrosscutting.helpers.NumericHelper;
 import co.edu.opticacrosscutting.helpers.TextHelper;
 
 public class ClienteNumeroDocumentoConsistencyIsValidImpl implements ClienteNumeroDocumentoConsistencyIsValid{
@@ -14,12 +13,10 @@ public class ClienteNumeroDocumentoConsistencyIsValidImpl implements ClienteNume
 	}
 	
 	private void validateRange(final String number) {
-		if(TextHelper.hasOnlyNumbers(number)) {
-			if(!NumericHelper.isGreaterOrEqual(TextHelper.convertToNumber(number), 1000)) {
-				var userMessage= "El número de documento del cliente debe ser 1000 o mayor para aplicar."; 
+			if(!TextHelper.lenIsValid(number, 9, 10)) {
+				var userMessage= "El número de documento del cliente debe tener entre 9 y 10 dígitos para aplicar."; 
 				BusinessLogicOpticaException.crear(userMessage);
 			}
-		}
 	}
 	
 	private void validateNotNull(final String data) {
@@ -28,5 +25,10 @@ public class ClienteNumeroDocumentoConsistencyIsValidImpl implements ClienteNume
 			
 			throw BusinessLogicOpticaException.crear(userMessage);
 		}
+	}
+
+	@Override
+	public void executeUpdate(String data) {
+		
 	}
 }

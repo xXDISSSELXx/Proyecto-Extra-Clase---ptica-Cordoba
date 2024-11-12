@@ -6,15 +6,21 @@ import co.edu.opticacrosscutting.helpers.TextHelper;
 
 public class ClienteDTO extends DomainDTO{
 
-	private int numeroDocumento;
+	private String numeroDocumento;
 	private TipoDocumentoDTO tipoDocumento;
 	private String nombre;
 	private String apellidos;
-	private int telefono;
+	private String telefono;
 	private String correo;
 	
 	public ClienteDTO() {
 		super(IdHelper.getDefaultAsString());
+		setNumeroDocumento(TextHelper.EMPTY);
+		setTipoDocumento(TipoDocumentoDTO.create());
+		setNombre(TextHelper.EMPTY);
+		setApellidos(TextHelper.EMPTY);
+		setTelefono(TextHelper.EMPTY);
+		setCorreo(TextHelper.EMPTY);
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -23,11 +29,11 @@ public class ClienteDTO extends DomainDTO{
 		return new ClienteDTO();
 	}
 
-	public int getNumeroDocumento() {
+	public String getNumeroDocumento() {
 		return numeroDocumento;
 	}
 
-	public ClienteDTO setNumeroDocumento(int numeroDocumento) {
+	public ClienteDTO setNumeroDocumento(String numeroDocumento) {
 		this.numeroDocumento = numeroDocumento;
 		return this;
 	}
@@ -59,11 +65,11 @@ public class ClienteDTO extends DomainDTO{
 		return this;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public ClienteDTO setTelefono(int telefono) {
+	public ClienteDTO setTelefono(String telefono) {
 		this.telefono = telefono;
 		return this;
 	}

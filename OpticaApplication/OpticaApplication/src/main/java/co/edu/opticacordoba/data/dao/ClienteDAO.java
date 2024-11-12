@@ -6,6 +6,6 @@ import co.edu.opticacordoba.entity.ClienteEntity;
 
 public interface ClienteDAO 
 extends CreateDAO<ClienteEntity>, RetrieveDAO<ClienteEntity, Integer>, DeleteDAO<Integer>, UpdateDAO<ClienteEntity>{
-
+	
 	List<ClienteEntity> findAll();
 }

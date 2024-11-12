@@ -1,6 +1,5 @@
 package co.edu.opticacordoba.businesslogic.facade.cliente.impl;
 
-import java.util.List;
 
 import co.edu.opticacordoba.businesslogic.adapter.dto.ClienteDTOAdapter;
 import co.edu.opticacordoba.businesslogic.facade.cliente.FindClienteFacade;
@@ -14,14 +13,14 @@ import co.edu.opticacordoba.dto.ClienteDTO;
 public class FindClienteFacadeImpl implements FindClienteFacade{
 
 	@Override
-	public List<ClienteDTO> execute(ClienteDTO data) {
-		var factory = DAOFactory.getFactory(DAOSource.SQLSERVER);
+	public ClienteDTO execute(Integer data) {
+		var factory = DAOFactory.getFactory(DAOSource.POSTGRESQL);
 		
 		try {
-			var findClienteUseCase = new FindClienteImpl(factory);
-			var clienteDomain = ClienteDTOAdapter.getClienteDTOAdapter().adaptSource(data);
+			var factory2 = DAOFactory.getFactory(DAOSource.POSTGRESQL);
+			var findClienteUseCase = new FindClienteImpl(factory2);
 			
-			return ClienteDTOAdapter.getClienteDTOAdapter().adaptTarget(findClienteUseCase.execute(clienteDomain));
+			return ClienteDTOAdapter.getClienteDTOAdapter().adaptTarget(findClienteUseCase.execute(data));
 		}catch (final OpticaException exception) {
 			throw exception;
 		}catch (final Exception exception) {

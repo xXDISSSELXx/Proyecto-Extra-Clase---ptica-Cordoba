@@ -2,7 +2,7 @@ package co.edu.opticacordoba.data.dao.impl.sql;
 
 import java.sql.Connection;
 
-import co.edu.opticacrosscutting.helpers.SqlConnectionHelper;
+import co.edu.uco.crosscutting.helpers.SqlConnectionHelper;
 import co.edu.opticacordoba.croscutting.exceptions.DataOpticaException;
 
 public class SqlDAO {

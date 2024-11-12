@@ -13,6 +13,12 @@ public class ClienteNameConsistencyIsValidImpl implements ClienteNameConsistency
 		validateFormat(data);
 	}
 
+	@Override
+	public void executeUpdate(String data) {
+		validateLength(data);
+		validateFormat(data);
+	}
+	
 	private void validateLength(final String data) {
 		if(!TextHelper.maxLenIsValid(data, 50)) {
 			var userMessage= "El nombre del cliente puede contener máximo 50 caracteres."; 
@@ -34,4 +40,6 @@ public class ClienteNameConsistencyIsValidImpl implements ClienteNameConsistency
 			throw BusinessLogicOpticaException.crear(userMessage);
 		}
 	}
+
+	
 }

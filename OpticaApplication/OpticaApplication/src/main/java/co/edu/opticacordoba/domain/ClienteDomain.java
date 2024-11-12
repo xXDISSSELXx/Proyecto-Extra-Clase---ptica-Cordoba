@@ -4,15 +4,15 @@ package co.edu.opticacordoba.domain;
 import co.edu.opticacrosscutting.helpers.TextHelper;
 public class ClienteDomain extends Domain{
 	
-	private int numeroDocumento;
+	private String numeroDocumento;
 	private TipoDocumentoDomain tipoDocumento;
 	private String nombre;
 	private String apellidos;
-	private int telefono;
+	private String telefono;
 	private String correo;
 
-	protected ClienteDomain(final int id, final int numeroDocumento, final TipoDocumentoDomain tipoDocumento, final String nombre, 
-			final String apellidos, final int telefono, final String correo) {
+	protected ClienteDomain(final int id, final String numeroDocumento, final TipoDocumentoDomain tipoDocumento, final String nombre, 
+			final String apellidos, final String telefono, final String correo) {
 		super(id);
 		setNumeroDocumento(numeroDocumento);
 		setTipoDocumento(tipoDocumento);
@@ -22,16 +22,16 @@ public class ClienteDomain extends Domain{
 		setCorreo(correo);
 	}
 	
-	public static final ClienteDomain create(final int id, final int numeroDocumento, final TipoDocumentoDomain tipoDocumento,
-											final String nombre, final String apellidos, final int telefono, final String correo) {
+	public static final ClienteDomain create(final int id, final String numeroDocumento, final TipoDocumentoDomain tipoDocumento,
+											final String nombre, final String apellidos, final String telefono, final String correo) {
 		return new ClienteDomain(id, numeroDocumento, tipoDocumento, nombre, apellidos, telefono, correo);
 	}
 	
-	public int getNumeroDocumento() {
+	public String getNumeroDocumento() {
 		return numeroDocumento;
 	}
 	
-	private void setNumeroDocumento(final int numeroDocumento) {
+	private void setNumeroDocumento(final String numeroDocumento) {
 		this.numeroDocumento = numeroDocumento;
 	}
 	
@@ -59,11 +59,11 @@ public class ClienteDomain extends Domain{
 		this.apellidos = TextHelper.applyTrim(apellidos);
 	}
 	
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 	
-	private void setTelefono(final int telefono) {
+	private void setTelefono(final String telefono) {
 		this.telefono = telefono;
 	}
 	

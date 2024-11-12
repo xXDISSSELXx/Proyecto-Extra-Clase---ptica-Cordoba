@@ -31,7 +31,7 @@ public class TipoDocumentoDTOAdapter implements Adapter<TipoDocumentoDomain, Tip
 	@Override
 	public TipoDocumentoDTO adaptTarget(TipoDocumentoDomain data) {
 		var domainToAdapt = ObjectHelper.getDefault(data, TipoDocumentoDomain.create(IdHelper.getDefault(), TextHelper.EMPTY));
-		return TipoDocumentoDTO.create().setId("").setTipoDocumento(domainToAdapt.getTipoDocumento());
+		return TipoDocumentoDTO.create().setId((String.valueOf(domainToAdapt.getId()))).setTipoDocumento(domainToAdapt.getTipoDocumento());
 	}
 
 	@Override

@@ -2,18 +2,14 @@ package co.edu.opticacordoba.entity;
 
 import co.edu.opticacrosscutting.helpers.IdHelper;
 import co.edu.opticacrosscutting.helpers.TextHelper;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
-//@Entity
-//@Table(name = "cliente")
 public class ClienteEntity extends DomainEntity {
 	
-	private int numeroDocumento;
+	private String numeroDocumento;
 	private TipoDocumentoEntity tipoDocumento;
 	private String nombre;
 	private String apellidos;
-	private int telefono;
+	private String telefono;
 	private String correo;
 
 	public ClienteEntity() {
@@ -26,11 +22,11 @@ public class ClienteEntity extends DomainEntity {
 		setCorreo(correo);
 	}
 	
-	public int getNumeroDocumento() {
+	public String getNumeroDocumento() {
 		return numeroDocumento;
 	}
 	
-	public void setNumeroDocumento(final int numeroDocumento) {
+	public void setNumeroDocumento(final String numeroDocumento) {
 		this.numeroDocumento = numeroDocumento;
 	}
 	
@@ -58,11 +54,11 @@ public class ClienteEntity extends DomainEntity {
 		this.apellidos = TextHelper.applyTrim(apellidos);
 	}
 	
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 	
-	public void setTelefono(final int telefono) {
+	public void setTelefono(final String telefono) {
 		this.telefono = telefono;
 	}
 	

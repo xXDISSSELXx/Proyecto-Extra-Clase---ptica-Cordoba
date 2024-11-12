@@ -13,15 +13,14 @@ public class RegisterNewClienteFacadeImpl implements RegisterNewClienteFacade{
 
 	@Override
 	public void execute(ClienteDTO data) {
-		var factory = DAOFactory.getFactory(DAOSource.SQLSERVER);
-		
+		var factory = DAOFactory.getFactory(DAOSource.POSTGRESQL);
 		try {
+			var factory2 = DAOFactory.getFactory(DAOSource.POSTGRESQL);
 			factory.initTransaction();
-			var registerNewClienteUseCase = new RegisterNewClienteImpl(factory);
+			var registerNewClienteUseCase = new RegisterNewClienteImpl(factory2);
 			var clienteDomain = ClienteDTOAdapter.getClienteDTOAdapter().adaptSource(data);
 			
 			registerNewClienteUseCase.execute(clienteDomain);
-			
 			factory.commitTransaction();
 		}catch (final OpticaException exception) {
 			factory.rollbackTransaction();

@@ -8,7 +8,6 @@ import co.edu.opticacordoba.domain.ClienteDomain;
 import co.edu.opticacordoba.domain.TipoDocumentoDomain;
 import co.edu.opticacordoba.dto.ClienteDTO;
 import co.edu.opticacrosscutting.helpers.IdHelper;
-import co.edu.opticacrosscutting.helpers.NumericHelper;
 import co.edu.opticacrosscutting.helpers.ObjectHelper;
 import co.edu.opticacrosscutting.helpers.TextHelper;
 
@@ -31,8 +30,8 @@ private static final Adapter<ClienteDomain, ClienteDTO> instance = new ClienteDT
 
 	@Override
 	public ClienteDTO adaptTarget(ClienteDomain data) {
-		var domainToAdapt = ObjectHelper.getDefault(data, ClienteDomain.create(IdHelper.getDefault(), NumericHelper.ZERO, TipoDocumentoDomain.create(IdHelper.getDefault(), TextHelper.EMPTY), TextHelper.EMPTY, TextHelper.EMPTY, NumericHelper.ZERO, TextHelper.EMPTY));
-		return ClienteDTO.create().setId("").setNumeroDocumento(domainToAdapt.getNumeroDocumento()).setTipoDocumento(TipoDocumentoDTOAdapter.getTipoDocumentoDTOAdapter().adaptTarget(domainToAdapt.getTipoDocumento())).setNombre(domainToAdapt.getNombre()).setApellidos(domainToAdapt.getApellidos()).setTelefono(domainToAdapt.getTelefono()).setCorreo(domainToAdapt.getCorreo());
+		var domainToAdapt = ObjectHelper.getDefault(data, ClienteDomain.create(IdHelper.getDefault(), TextHelper.EMPTY, TipoDocumentoDomain.create(IdHelper.getDefault(), TextHelper.EMPTY), TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY));
+		return ClienteDTO.create().setId(String.valueOf(data.getId())).setNumeroDocumento(domainToAdapt.getNumeroDocumento()).setTipoDocumento(TipoDocumentoDTOAdapter.getTipoDocumentoDTOAdapter().adaptTarget(domainToAdapt.getTipoDocumento())).setNombre(domainToAdapt.getNombre()).setApellidos(domainToAdapt.getApellidos()).setTelefono(domainToAdapt.getTelefono()).setCorreo(domainToAdapt.getCorreo());
 	}
 
 	@Override

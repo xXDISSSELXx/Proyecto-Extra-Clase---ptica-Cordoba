@@ -2,13 +2,9 @@ package co.edu.opticacordoba.entity;
 
 import co.edu.opticacrosscutting.helpers.IdHelper;
 import co.edu.opticacrosscutting.helpers.TextHelper;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
-//@Entity
-//@Table(name = "tipodocumento")
 public class TipoDocumentoEntity extends DomainEntity {
-
+	
 	private String tipoDocumento;
 
 	public TipoDocumentoEntity() {

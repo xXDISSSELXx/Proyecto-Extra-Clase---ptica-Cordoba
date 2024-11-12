@@ -8,7 +8,6 @@ import co.edu.opticacordoba.domain.ClienteDomain;
 import co.edu.opticacordoba.domain.TipoDocumentoDomain;
 import co.edu.opticacordoba.entity.ClienteEntity;
 import co.edu.opticacrosscutting.helpers.IdHelper;
-import co.edu.opticacrosscutting.helpers.NumericHelper;
 import co.edu.opticacrosscutting.helpers.ObjectHelper;
 import co.edu.opticacrosscutting.helpers.TextHelper;
 
@@ -32,7 +31,7 @@ public class ClienteEntityAdapter implements Adapter<ClienteDomain, ClienteEntit
 
 	@Override
 	public ClienteEntity adaptTarget(ClienteDomain data) {
-		var domainToAdapt = ObjectHelper.getDefault(data, ClienteDomain.create(IdHelper.getDefault(), NumericHelper.ZERO, TipoDocumentoDomain.create(IdHelper.getDefault(), TextHelper.EMPTY), TextHelper.EMPTY, TextHelper.EMPTY, NumericHelper.ZERO, TextHelper.EMPTY));
+		var domainToAdapt = ObjectHelper.getDefault(data, ClienteDomain.create(IdHelper.getDefault(), TextHelper.EMPTY, TipoDocumentoDomain.create(IdHelper.getDefault(), TextHelper.EMPTY), TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY));
 		var entityAdapted = new ClienteEntity();
 		entityAdapted.setId(domainToAdapt.getId());
 		entityAdapted.setNumeroDocumento(domainToAdapt.getNumeroDocumento());

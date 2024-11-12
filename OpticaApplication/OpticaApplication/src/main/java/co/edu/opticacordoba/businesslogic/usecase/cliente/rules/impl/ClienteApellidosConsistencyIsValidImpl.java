@@ -12,7 +12,13 @@ public class ClienteApellidosConsistencyIsValidImpl implements ClienteApellidosC
 		validateFormat(data);
 		validateNotNull(data);
 	}
-
+	
+	@Override
+	public void executeUpdate(String data) {
+		validateLength(data);
+		validateFormat(data);
+	}
+	
 	private void validateLength(final String data) {
 		if(!TextHelper.maxLenIsValid(data, 50)) {
 			var userMessage= "El apellido del cliente puede contener máximo 100 caracteres."; 

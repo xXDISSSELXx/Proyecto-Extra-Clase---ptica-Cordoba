@@ -10,12 +10,20 @@ public class ClienteNumeroDocumentoConsistencyIsValidImpl implements ClienteNume
 	public void execute(String data) {
 		validateNotNull(data);
 		validateRange(data);
+		validateNumber(data);
+	}
+	
+	private void validateNumber(final String number) {
+		if(!TextHelper.hasOnlyNumbers(number)) {
+			var userMessage= "El número de documento del cliente debe tener únicamente números para aplicar."; 
+			throw BusinessLogicOpticaException.crear(userMessage);
+		}
 	}
 	
 	private void validateRange(final String number) {
 			if(!TextHelper.lenIsValid(number, 9, 10)) {
 				var userMessage= "El número de documento del cliente debe tener entre 9 y 10 dígitos para aplicar."; 
-				BusinessLogicOpticaException.crear(userMessage);
+				throw BusinessLogicOpticaException.crear(userMessage);
 			}
 	}
 	

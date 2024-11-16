@@ -11,6 +11,7 @@ public class ClienteNameConsistencyIsValidImpl implements ClienteNameConsistency
 		validateNotNull(data);
 		validateLength(data);
 		validateFormat(data);
+		validateText(data);
 	}
 
 	@Override
@@ -36,6 +37,14 @@ public class ClienteNameConsistencyIsValidImpl implements ClienteNameConsistency
 	private void validateNotNull(final String data) {
 		if(TextHelper.isEmpty(data)) {
 			var userMessage= "El nombre del cliente no puede estar vacío...";
+			
+			throw BusinessLogicOpticaException.crear(userMessage);
+		}
+	}
+	
+	private void validateText(final String data) {
+		if(TextHelper.hasNumber(data)) {
+			var userMessage= "El nombre del cliente no puede contener números...";
 			
 			throw BusinessLogicOpticaException.crear(userMessage);
 		}

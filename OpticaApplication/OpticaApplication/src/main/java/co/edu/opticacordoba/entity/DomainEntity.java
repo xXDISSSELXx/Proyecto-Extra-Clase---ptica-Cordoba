@@ -18,7 +18,7 @@ public class DomainEntity {
 		setId(id);
 	}
 
-	protected int getId() {
+	public int getId() {
 		return id;
 	}
 

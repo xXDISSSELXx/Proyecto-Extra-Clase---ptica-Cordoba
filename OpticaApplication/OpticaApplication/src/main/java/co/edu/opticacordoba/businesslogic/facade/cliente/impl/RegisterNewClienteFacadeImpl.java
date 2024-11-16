@@ -15,9 +15,8 @@ public class RegisterNewClienteFacadeImpl implements RegisterNewClienteFacade{
 	public void execute(ClienteDTO data) {
 		var factory = DAOFactory.getFactory(DAOSource.POSTGRESQL);
 		try {
-			var factory2 = DAOFactory.getFactory(DAOSource.POSTGRESQL);
 			factory.initTransaction();
-			var registerNewClienteUseCase = new RegisterNewClienteImpl(factory2);
+			var registerNewClienteUseCase = new RegisterNewClienteImpl(factory);
 			var clienteDomain = ClienteDTOAdapter.getClienteDTOAdapter().adaptSource(data);
 			
 			registerNewClienteUseCase.execute(clienteDomain);

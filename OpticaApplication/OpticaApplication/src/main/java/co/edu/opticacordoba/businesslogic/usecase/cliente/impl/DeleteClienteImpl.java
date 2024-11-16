@@ -1,6 +1,8 @@
 package co.edu.opticacordoba.businesslogic.usecase.cliente.impl;
 
 import co.edu.opticacordoba.businesslogic.usecase.cliente.DeleteCliente;
+import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.ClienteExists;
+import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.impl.ClienteExistsImpl;
 import co.edu.opticacordoba.croscutting.exceptions.BusinessLogicOpticaException;
 import co.edu.opticacordoba.data.dao.DAOFactory;
 import co.edu.opticacrosscutting.helpers.ObjectHelper;
@@ -8,6 +10,8 @@ import co.edu.opticacrosscutting.helpers.ObjectHelper;
 public class DeleteClienteImpl implements DeleteCliente{
 	
 	private DAOFactory daoFactory;
+	
+	ClienteExists clienteExists = new ClienteExistsImpl();
 	
 	public DeleteClienteImpl(DAOFactory daoFactory) {
 			
@@ -29,6 +33,7 @@ public class DeleteClienteImpl implements DeleteCliente{
 
 	@Override
 	public void execute(Integer id) {
+		clienteExists.execute(id, daoFactory);
 		daoFactory.getClienteDAO().delete(id);
 	}
 

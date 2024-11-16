@@ -11,6 +11,7 @@ public class ClienteApellidosConsistencyIsValidImpl implements ClienteApellidosC
 		validateLength(data);
 		validateFormat(data);
 		validateNotNull(data);
+		validateText(data);
 	}
 	
 	@Override
@@ -36,6 +37,14 @@ public class ClienteApellidosConsistencyIsValidImpl implements ClienteApellidosC
 	private void validateNotNull(final String data) {
 		if(TextHelper.isEmpty(data)) {
 			var userMessage= "El apellido del cliente no puede estar vacío...";
+			
+			throw BusinessLogicOpticaException.crear(userMessage);
+		}
+	}
+	
+	private void validateText(final String data) {
+		if(TextHelper.hasNumber(data)) {
+			var userMessage= "El apellido del cliente no puede contener números...";
 			
 			throw BusinessLogicOpticaException.crear(userMessage);
 		}

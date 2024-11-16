@@ -5,6 +5,8 @@ import java.util.List;
 
 import co.edu.opticacordoba.businesslogic.adapter.entity.ClienteEntityAdapter;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.FindCliente;
+import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.ClienteExists;
+import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.impl.ClienteExistsImpl;
 import co.edu.opticacordoba.croscutting.exceptions.BusinessLogicOpticaException;
 import co.edu.opticacordoba.data.dao.DAOFactory;
 import co.edu.opticacordoba.domain.ClienteDomain;
@@ -13,6 +15,7 @@ import co.edu.opticacrosscutting.helpers.ObjectHelper;
 public class FindClienteImpl implements FindCliente{
 
 	private DAOFactory factory;
+	ClienteExists clienteExists = new ClienteExistsImpl();
 	
 	public FindClienteImpl(DAOFactory factory) {
 		setDaoFactory(factory);
@@ -20,6 +23,7 @@ public class FindClienteImpl implements FindCliente{
 
 	@Override
 	public ClienteDomain execute(Integer data) {
+		clienteExists.execute(data, factory);
 		var clienteEntity = factory.getClienteDAO().findByID(data);
 		
 		return  ClienteEntityAdapter.getClienteEntityAdapter().adaptSource(clienteEntity);
@@ -34,19 +38,4 @@ public class FindClienteImpl implements FindCliente{
 		}
 		this.factory = factory;
 	}
-	
-	/*FIND BY FILTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER
-	 * 
-	 * @Override
-	public List<ClienteDomain> execute(ClienteDomain data) {
-		var clienteDomainToMap = ClienteDomain.create(data.getId(), data.getNumeroDocumento(), data.getTipoDocumento(), data.getNombre(), data.getApellidos(), data.getTelefono(), data.getCorreo());
-		var clienteEntity = ClienteEntityAdapter.getClienteEntityAdapter().adaptTarget(clienteDomainToMap);
-		var clienteEntityList = factory.getClienteDAO().findByFilter(clienteEntity);
-		var clienteDomain = new ArrayList<ClienteDomain>();
-		for(ClienteEntity domain : clienteEntityList) {
-			clienteDomain.add(ClienteEntityAdapter.getClienteEntityAdapter().adaptSource(domain));
-		}
-		return  clienteDomain;
-	}*/
-
 }

@@ -26,14 +26,14 @@ public class ClienteCorreoConsistencyIsValidImpl implements ClienteCorreoConsist
 	private void validateLength(final String data) {
 		if(!TextHelper.maxLenIsValid(TextHelper.applyTrim(data), 150)) {
 			var userMessage= "El correo del cliente puede contener máximo 150 caracteres."; 
-			BusinessLogicOpticaException.crear(userMessage);
+			throw BusinessLogicOpticaException.crear(userMessage);
 		}
 	}
 	
 	private void isCorreo(final String string) {
-		 if(!TextHelper.applyTrim(string).matches(".*@.*[a-z]+.*..*")) {
+		 if(!TextHelper.applyTrim(string).matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
 			 var userMessage = "El correo del cliente no contiene un fórmato válido";
-			 BusinessLogicOpticaException.crear(userMessage);
+			 throw BusinessLogicOpticaException.crear(userMessage);
 		 }
 	}
 

@@ -29,8 +29,8 @@ public final class ClientePostgreSQLDAO extends SqlDAO implements ClienteDAO {
 			} else {
 				statement.append(") VALUES (?, ?, ?, ?, ?)");
 			}
-			try(Connection connection = getConnection(); 
-		            var preparedStatement = connection.prepareStatement(statement.toString()))  {
+			try {Connection connection = getConnection(); 
+		            var preparedStatement = connection.prepareStatement(statement.toString());
 				preparedStatement.setString(1, data.getNumeroDocumento());
 				preparedStatement.setInt(2, data.getTipoDocumento().getId());
 				preparedStatement.setString(3, data.getNombre());

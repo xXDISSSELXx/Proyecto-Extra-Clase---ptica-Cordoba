@@ -4,11 +4,13 @@ import co.edu.opticacordoba.businesslogic.adapter.entity.ClienteEntityAdapter;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.UpdateCliente;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.ClienteApellidosConsistencyIsValid;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.ClienteCorreoConsistencyIsValid;
+import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.ClienteExists;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.ClienteNameConsistencyIsValid;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.ClienteNumeroDocumentoDoesNotExistsForTipoDocumento;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.ClienteTelefonoConsistencyIsValid;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.impl.ClienteApellidosConsistencyIsValidImpl;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.impl.ClienteCorreoConsistencyIsValidImpl;
+import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.impl.ClienteExistsImpl;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.impl.ClienteNameConsistencyIsValidImpl;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.impl.ClienteNumeroDocumentoDoesNotExistsForTipoDocumentoImpl;
 import co.edu.opticacordoba.businesslogic.usecase.cliente.rules.impl.ClienteTelefonoConsistencyIsValidImpl;
@@ -25,6 +27,7 @@ public class UpdateClienteImpl implements UpdateCliente{
 	ClienteNameConsistencyIsValid clienteNameConsistencyIsValid = new ClienteNameConsistencyIsValidImpl();
 	ClienteNumeroDocumentoDoesNotExistsForTipoDocumento clienteNumeroDocumentoDoesNotExistsForTipoDocumento = new ClienteNumeroDocumentoDoesNotExistsForTipoDocumentoImpl();
 	ClienteTelefonoConsistencyIsValid clienteTelefonoConsistencyIsValid = new ClienteTelefonoConsistencyIsValidImpl();
+	ClienteExists clienteExists = new ClienteExistsImpl();
 	
 	private DAOFactory daoFactory;
 	
@@ -34,6 +37,7 @@ public class UpdateClienteImpl implements UpdateCliente{
 
 	@Override
 	public void execute(ClienteDomain data) {
+		clienteExists.execute(data.getId(), daoFactory);
 		apellidosConsistencyIsValid.executeUpdate(data.getApellidos());
 		clienteCorreoConsistencyIsValid.executeUpdate(data.getCorreo());
 		clienteNameConsistencyIsValid.executeUpdate(data.getNombre());

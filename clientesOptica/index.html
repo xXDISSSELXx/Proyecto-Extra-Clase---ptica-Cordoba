@@ -58,8 +58,19 @@
 
         <div class="buttons">
             <button>Guardar</button>
+
             <button class="cancel">Cancelar</button>
         </div>
+    <script>
+        document.querySelector('button').addEventListener('click', function() {
+            document.getElementById('nombres').value = '';
+            document.getElementById('apellidos').value = '';
+            document.getElementById('tipo-documento').value = 'Seleccionar';
+            document.getElementById('numero-documento').value = '';
+            document.getElementById('correo').value = '';
+            document.getElementById('telefono').value = '';
+        });
+    </script>
     </div>
 </div>
 
